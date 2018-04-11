@@ -81,22 +81,6 @@ class CoinBox
       .center coin.coords()...
       #.attr 'data-coin', i
 
-###
-  @fromState: (state, svg) ->
-    v = new @ svg
-    v.loadState state
-    v
-
-  loadState: (search = location.search) ->
-    if getParameterByName 'p', search
-      @sites = for p in getParameterByName('p', search).split ';'
-        [x, y] = p.split ','
-        x: parseFloat x
-        y: parseFloat y
-    @siteChange()
-
-###
-
 class @CoinPuzzle extends CoinBox
   constructor: (args...) ->
     super args...
@@ -604,8 +588,8 @@ window?.onload = ->
 
 main = ->
   fonts =
-    font5x7: require('./font5x7.js').font5x7
-    font5x9: require('./font5x9.js').font5x9
+    font5x7: require('./font5x7.coffee').font5x7
+    font5x9: require('./font5x9.coffee').font5x9
   for name, font of fonts
     console.log name
     for char, ascii of font
