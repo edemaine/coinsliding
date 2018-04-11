@@ -3,7 +3,6 @@
 * text describing puzzles, rules
 
 - Meteor server
-  * improve layout, especially on mobile
   - android app
   - ensure index
   - larger server?
