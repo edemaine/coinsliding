@@ -3,21 +3,21 @@
 - text describing puzzles, rules
 
 - Meteor server
-  * port code over, still single-page design
-  - pop-up for record numbers (or infinity) for all 27^2 puzzles
-    - click on one to switch to that puzzle
-  - display of best record for the current puzzle (try to beat this)
-  - pop-up of all solution counts for all people, sorted by count
+  x port code over, still single-page design
+  x pop-up for record numbers (or infinity) for all 27^2 puzzles
+    x click on one to switch to that puzzle
+  x display of best record for the current puzzle (try to beat this)
+  x pop-up of all solution counts for all people, sorted by count
     (but no solution/animation for now)
-  * pop-up for record entry when you solve the puzzle:
+  x pop-up for record entry when you solve the puzzle:
     name, email (both optional), post button
-    - name & email ideally remembered for next time
-  * checking of solutions on server
+    x name & email ideally remembered for next time
+  x checking of solutions on server
     - starting from start...
     - each move valid
     - final image matches target
-  * Puzzle: family (5x7, 5x9, etc.), puzzle (A,B), best record for each puzzle
-  * Solution: family, puzzle, solver name, length, private: email, solution
+  x Puzzle: family (5x7, 5x9, etc.), puzzle (A,B), best record for each puzzle
+  x Solution: family, puzzle, solver name, length, private: email, solution
 
 - puzzle solving interface
   x move counting
