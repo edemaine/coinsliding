@@ -4,7 +4,6 @@
 
 - Meteor server
   * improve layout, especially on mobile
-    - float left/right title, make smaller
     - put highscore on its own line?
     - prevent some line breaks from font choice
   * Kadira

@@ -6,6 +6,11 @@
 td { vertical-align: middle; }
 table { border-collapse: collapse; }
 
+.header h1, .header h2 { float: left; margin: 0px; }
+.header h1 { float: left; margin-right: 1em; font-size: 1.25em; }
+.header h2 { float: right; margin-left: 1em; font-size: 1em; }
+.clear { clear: both; }
+
 .input { display: inline-block; margin-right: 1em; }
 
 svg .grid line { stroke: #cccccc; stroke-width: 0.04; stroke-linecap: round; }

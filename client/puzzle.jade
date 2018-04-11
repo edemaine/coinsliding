@@ -57,14 +57,12 @@ template(name="main")
               else
                 a(href="/?start={{letter1}}&target={{letter2}}&{{family}}=1") {{record letter1=letter1 letter2=letter2}}
 
-  table(width="100%")
-    tr
-      td(style="text-align: left; vertical-align: middle;")
-        h1
-          a(href=".") Coin Sliding Font Puzzle
-      td(style="text-align: right; vertical-align: middle")
-        h2
-          | by <a href="http://erikdemaine.org/">Erik&nbsp;Demaine</a> and <a href="http://martindemaine.org">Martin&nbsp;Demaine</a>, 2018
+  .header
+    h1
+      a(href=".") Coin Sliding Font Puzzle
+    h2
+      | by <a href="http://erikdemaine.org/">Erik&nbsp;Demaine</a> &amp; <a href="http://martindemaine.org">Martin&nbsp;Demaine</a>, 2018
+  .clear
 
   //-table#data.noprint(width="100%")
     tr
