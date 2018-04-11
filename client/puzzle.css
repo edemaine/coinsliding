@@ -31,4 +31,7 @@ svg .valid rect { fill: lightgreen }
   padding: 1ex; text-align: left;
 }
 
+#puzzles td, #puzzles th {
+  min-width: 1em; text-align: center;
+}
 .zero { position: relative; top: 0.1ex; }
