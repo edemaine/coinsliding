@@ -3,7 +3,6 @@
 * text describing puzzles, rules
 
 - Meteor server
-  * remove zeroes on diagonal, avoid saying "solved!!" 
   * improve layout, especially on mobile
     - float left/right title, make smaller
     - put highscore on its own line?

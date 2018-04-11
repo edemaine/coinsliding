@@ -44,6 +44,9 @@ Template.main.helpers
     "#{@date.toLocaleDateString()} at #{@date.toLocaleTimeString()}"
 
   letters: ['/', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z']
+  sameLetter: (letters) ->
+    letters = letters.hash
+    letters.letter1 == letters.letter2
   record: (letters) ->
     letters = letters.hash
     (Puzzles.findOne
@@ -88,6 +91,9 @@ Template.main.events
   Session.set 'start', getStart()
   Session.set 'target', getTarget()
   Session.set 'moves', getMoves()
+
+  ## Don't check for solving A -> A puzzles
+  return if getStart() == getTarget()
   if @startPuzzle?.toASCII() == @targetPuzzle?.toASCII()
     document.getElementById('win').style.display = 'block'
   else

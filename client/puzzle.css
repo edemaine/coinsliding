@@ -4,6 +4,7 @@
 }
 /*td { text-align: center; }*/
 td { vertical-align: middle; }
+table { border-collapse: collapse; }
 
 .input { display: inline-block; margin-right: 1em; }
 
@@ -29,4 +30,5 @@ svg .valid rect { fill: lightgreen }
   border: thin solid;
   padding: 1ex; text-align: left;
 }
-table { border-collapse: collapse; }
+
+.zero { position: relative; top: 0.1ex; }
