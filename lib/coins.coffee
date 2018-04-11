@@ -179,9 +179,16 @@ class @CoinPuzzle extends CoinBox
       continue unless @svg?
       do (coin) =>
         coin.circle
+        .on 'mouseenter', (e) =>
+          @unhighlight()
+          return unless @coinCanMove coin
+          @highlight coin
+        .on 'mouseleave', (e) =>
+          @unhighlight()
         .mousedown (e) =>
           e.preventDefault()
           e.stopPropagation()
+          @unhighlight()
           return unless @coinCanMove coin
           @dragstart coin, e
         .touchstart (e) =>
@@ -265,7 +272,16 @@ class @CoinPuzzle extends CoinBox
     while @moveStack.length
       @undo()
 
+  unhighlight: (coin) ->
+    return unless @highlighted?
+    @highlighted.circle.removeClass 'highlight'
+    @highlighted = null
+  highlight: (coin) ->
+    @highlighted = coin
+    coin.circle.addClass 'highlight'
+
   dragstart: (coin, e) ->
+    @highlight coin
     @dragPoint = @svg.point e.clientX, e.clientY
     @dragCoin = coin
     for target in @validTargets coin
@@ -295,6 +311,7 @@ class @CoinPuzzle extends CoinBox
 
   dragstop: (e) ->
     return unless @dragPoint?
+    @unhighlight()
     @validGroup.clear()
     @moveCoin @dragCoin, @dragcoord e, true
     #@saveState()
@@ -322,10 +339,6 @@ class @CoinPuzzle extends CoinBox
 ###
 
 class CoinPuzzleReverse extends CoinPuzzle
-  constructor: (args...) ->
-    super args...
-    @on 'move', => @coinsCheck()
-
   coinCanMove: (coin) ->
     neighbors = 0
     for neighbor in neighborCoords [coin.x, coin.y]
@@ -336,16 +349,6 @@ class CoinPuzzleReverse extends CoinPuzzle
   validMove: (coin, coords) ->
     return false if @coinAt coords
     @coinCanMove coin
-
-  coinsChange: ->
-    super()
-    @coinsCheck()
-  coinsCheck: ->
-    for coin in @coins
-      if @coinCanMove coin
-        coin.circle.removeClass 'rigid'
-      else
-        coin.circle.addClass 'rigid'
 
 ## Based on jolly.exe's code from http://stackoverflow.com/questions/901115/how-can-i-get-query-string-values-in-javascript
 getParameterByName = (name, search = location.search) ->

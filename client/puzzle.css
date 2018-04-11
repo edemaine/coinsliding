@@ -23,7 +23,8 @@ svg .grid line { stroke: #cccccc; stroke-width: 0.04; stroke-linecap: round; }
 svg .coins circle {
   stroke: black; stroke-width: 0.1; fill: orange;
 }
-svg.puzzle .coins circle:hover:not(.rigid) { fill: red; }
+/*svg.puzzle .coins circle:hover:not(.rigid) { fill: red; }*/
+svg .coins circle.highlight { fill: red; }
 svg .valid rect { fill: lightgreen }
 
 .modal {
