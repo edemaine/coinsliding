@@ -5,7 +5,6 @@ with numbers: 37*36*2 = 2664 puzzles
 
 - Meteor server
   - android app
-  - ensure index
   - larger server?
   - documentation
   - slow to load the All Puzzles on mobile (and button toggles?)

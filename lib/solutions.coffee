@@ -1,6 +1,11 @@
 @Solutions = new Mongo.Collection 'solutions'
 
 if Meteor.isServer
+  Solutions._ensureIndex [
+    ['family', 1]
+    ['puzzle', 1]
+  ]
+
   Meteor.publish 'solutions.puzzle', (family, puzzle) ->
     check family, String
     check puzzle, String
