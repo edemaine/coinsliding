@@ -24,7 +24,7 @@ template(name="main")
 
   .modal#highscores
     button#hideHighscores Close
-    h1 Highscores for #{family}: #{start} &rarr; #{target}
+    h1 Best scores for #{family}: #{start} &rarr; #{target}
     table
       tr
         th Number of moves
@@ -79,7 +79,7 @@ template(name="main")
     input#font5x9(type="radio", name="font")
     label(for="font5x9") 5&times;9&nbsp;font (<i>hard</i>)
     | &nbsp;
-    button#showHighscores Highscore: #{highscore}
+    button#showHighscores Best score: #{highscore}
 
   table(width="100%")
     tr
