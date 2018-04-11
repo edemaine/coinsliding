@@ -25,12 +25,12 @@ getMoves = ->
 
 infinity = "∞"
 
-Template.main.helpers
-  family: -> Session.get 'family'
-  start: -> Session.get 'start'
-  target: -> Session.get 'target'
-  moves: -> Session.get 'moves'
+Template.registerHelper 'family', -> Session.get 'family'
+Template.registerHelper 'start', -> Session.get 'start'
+Template.registerHelper 'target', -> Session.get 'target'
+Template.registerHelper 'moves', -> Session.get 'moves'
 
+Template.main.helpers
   highscore: ->
     (Solutions.findOne
       family: Session.get 'family'
