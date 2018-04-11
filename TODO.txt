@@ -6,7 +6,6 @@
   * improve layout, especially on mobile
     - put highscore on its own line?
     - prevent some line breaks from font choice
-  * Kadira
   - android app
   - ensure index
   - larger server?
