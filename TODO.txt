@@ -7,7 +7,6 @@ with numbers: 37*36*2 = 2664 puzzles
   - android app
   - larger server?
   - documentation
-  - slow to load the All Puzzles on mobile (and button toggles?)
   - detect ready state and show LOADING instead of NONE
   x port code over, still single-page design
   x pop-up for record numbers (or infinity) for all 27^2 puzzles
