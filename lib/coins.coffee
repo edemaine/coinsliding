@@ -438,11 +438,11 @@ setStart = (newStart) ->
   svg = SVG('startsvg')
   .attr 'preserveAspectRatio', 'xMidYMin'
   @startPuzzle = CoinPuzzle.fromASCII svg, getFont()[start]
-  .on 'move', ->
+  .on 'move', startUpdate = ->
     document.getElementById 'moves'
     .innerHTML = startPuzzle.nMoves()
     puzzleSetState()
-  puzzleSetState()
+  startUpdate()
 
 setTarget = (newTarget) ->
   return if target == newTarget
@@ -452,11 +452,11 @@ setTarget = (newTarget) ->
   svg = SVG('targetsvg')
   .attr 'preserveAspectRatio', 'xMidYMin'
   @targetPuzzle = CoinPuzzleReverse.fromASCII svg, getFont()[target]
-  .on 'move', ->
+  .on 'move', targetUpdate = ->
     document.getElementById 'reverseMoves'
     .innerHTML = targetPuzzle.nMoves()
     puzzleSetState()
-  puzzleSetState()
+  targetUpdate()
 
 puzzleSetState = ->
   return if puzzleLoading
