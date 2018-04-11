@@ -1,6 +1,8 @@
 27*26*2 = 1404 puzzles
+36*35*2 = 2520 puzzles
 
 * text describing puzzles, rules
+* numbers
 
 - Meteor server
   - android app
