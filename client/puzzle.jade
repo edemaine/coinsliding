@@ -38,7 +38,8 @@ template(name="main")
     p
     button.hideHighscores Close
 
-  +puzzlesModal
+  if puzzlesOn
+    +puzzlesModal
 
   .header
     h1
@@ -145,7 +146,7 @@ template(name="fontOptions")
   option(value="9") 9
 
 template(name="puzzlesModal")
-  .modal#puzzles
+  .modal.show#puzzles
     button.hidePuzzles Close
     h1 All puzzles in family #{family}:
     table

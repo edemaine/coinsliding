@@ -1,3 +1,5 @@
+puzzlesOn = new ReactiveVar
+
 Template.main.onCreated ->
   @autorun ->
     Meteor.subscribe 'solutions.puzzle', Session.get('family'), sessionPuzzle()
@@ -45,6 +47,8 @@ Template.main.helpers
   date: ->
     "#{@date.toLocaleDateString()} at #{@date.toLocaleTimeString()}"
 
+  puzzlesOn: -> puzzlesOn.get()
+
 Template.main.events
   'click #submit': ->
     Meteor.call 'submitSolution',
@@ -68,9 +72,9 @@ Template.main.events
     document.getElementById('highscores').style.display = 'none'
 
   'click .showPuzzles': (e, t) ->
-    document.getElementById('puzzles').style.display = 'block'
+    puzzlesOn.set true
   'click .hidePuzzles': (e, t) ->
-    document.getElementById('puzzles').style.display = 'none'
+    puzzlesOn.set false
 
   'input #name': ->
     Session.setPersistent 'name', document.getElementById('name').value
@@ -92,12 +96,19 @@ Template.main.events
 
 puzzlesDict = new ReactiveDict
 
+Puzzles.find().observe
+  added: added = (puzzle) ->
+    return unless puzzle.family and puzzle.puzzle
+    puzzlesDict.set "#{puzzle.family}:#{puzzle.puzzle}",
+      puzzle.bestLength ? infinity
+  changed: added
+  removed: (puzzle) ->
+    return unless puzzle.family and puzzle.puzzle
+    puzzlesDict.set "#{puzzle.family}:#{puzzle.puzzle}", null
+
 Template.puzzlesModal.onCreated ->
-  @autorun ->
-    Puzzles.find
-      family: Session.get 'family'
-    .forEach (puzzle) ->
-      puzzlesDict.set puzzle.puzzle, puzzle.bestLength ? infinity
+  @autorun =>
+    @subscribe 'puzzles.family', Session.get 'family'
 
 Template.puzzlesModal.helpers
   letters: ['/', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', '0', '1', '2', '3', '4', '5', '6', '7', '8', '9']
@@ -106,8 +117,7 @@ Template.puzzlesModal.helpers
     letters.letter1 == letters.letter2
   record: (letters) ->
     letters = letters.hash
-    puzzle = "#{letters.letter1}-#{letters.letter2}"
-    puzzlesDict.get puzzle
+    puzzlesDict.get "#{Session.get 'family'}:#{letters.letter1}-#{letters.letter2}"
   #puzzlesTable: ->
   #  family = Session.get 'family'
   #  dict = {}

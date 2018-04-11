@@ -37,9 +37,8 @@ svg .valid rect { fill: lightgreen }
   padding: 20px;
   background: white;
 }
-.modal-content {
-  position: absolute;
-  overflow: auto;
+.modal.show {
+  display: block;
 }
 
 /*#win { background: bisque; }*/
