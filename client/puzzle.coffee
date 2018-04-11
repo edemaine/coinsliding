@@ -45,17 +45,6 @@ Template.main.helpers
   date: ->
     "#{@date.toLocaleDateString()} at #{@date.toLocaleTimeString()}"
 
-  letters: ['/', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', '0', '1', '2', '3', '4', '5', '6', '7', '8', '9']
-  sameLetter: (letters) ->
-    letters = letters.hash
-    letters.letter1 == letters.letter2
-  record: (letters) ->
-    letters = letters.hash
-    (Puzzles.findOne
-      family: Session.get 'family'
-      puzzle: "#{letters.letter1}-#{letters.letter2}"
-    )?.bestLength ? infinity
-
 Template.main.events
   'click #submit': ->
     Meteor.call 'submitSolution',
@@ -80,7 +69,7 @@ Template.main.events
 
   'click .showPuzzles': (e, t) ->
     document.getElementById('puzzles').style.display = 'block'
-  'click .hidePuzzles': ->
+  'click .hidePuzzles': (e, t) ->
     document.getElementById('puzzles').style.display = 'none'
 
   'input #name': ->
@@ -100,3 +89,22 @@ Template.main.events
     document.getElementById('win').style.display = 'block'
   else
     document.getElementById('win').style.display = 'none'
+
+puzzlesDict = new ReactiveDict
+
+Template.puzzlesModal.onCreated ->
+  @autorun ->
+    Puzzles.find
+      family: Session.get 'family'
+    .forEach (puzzle) ->
+      puzzlesDict.set puzzle.puzzle, puzzle.bestLength ? infinity
+
+Template.puzzlesModal.helpers
+  letters: ['/', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', '0', '1', '2', '3', '4', '5', '6', '7', '8', '9']
+  sameLetter: (letters) ->
+    letters = letters.hash
+    letters.letter1 == letters.letter2
+  record: (letters) ->
+    letters = letters.hash
+    puzzle = "#{letters.letter1}-#{letters.letter2}"
+    puzzlesDict.get puzzle
