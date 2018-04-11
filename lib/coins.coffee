@@ -413,9 +413,9 @@ puzzleLoadState = ->
     if (true for key in radio.options when document.getElementById(key).checked).length == 0
       document.getElementById(radio.default).checked = true
   lastFont = getFont()
-  setStart getParameterByName('start') ? '/', false
+  setStart getParameterByName('start') ? 'A', false
   startPuzzle.decodeMoves getParameterByName 'moves'
-  setTarget getParameterByName('target') ? 'A', false
+  setTarget getParameterByName('target') ? 'B', false
   targetPuzzle.decodeMoves getParameterByName 'rmoves'
   puzzleLoading = false
   puzzleSolveCheck?()
