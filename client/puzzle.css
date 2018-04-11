@@ -10,11 +10,13 @@ table { border-collapse: collapse; }
 .header h1 { float: left; margin-right: 1em; font-size: 1.25em; }
 .header h2 { float: right; margin-left: 1em; font-size: 1em; }
 
+.right { float: right; }
 .clear { clear: both; }
 .space { margin-left: 1em; }
 .nobreak { display: inline-block; }
 
 .input { display: inline-block; margin-right: 1em; }
+.buttons { font-size: 0px; }
 
 svg .grid line { stroke: #cccccc; stroke-width: 0.04; stroke-linecap: round; }
 svg .coins circle {
