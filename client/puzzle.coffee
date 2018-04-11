@@ -108,3 +108,22 @@ Template.puzzlesModal.helpers
     letters = letters.hash
     puzzle = "#{letters.letter1}-#{letters.letter2}"
     puzzlesDict.get puzzle
+  #puzzlesTable: ->
+  #  family = Session.get 'family'
+  #  dict = {}
+  #  Puzzles.find
+  #    family: family
+  #  .forEach (puzzle) ->
+  #    dict[puzzle.puzzle] = puzzle.bestLength ? infinity
+  #  font = getFont()
+  #  rows = []
+  #  rows.push
+  #    for letter2 of font
+  #      "<th>#{letter2}</th>"
+  #  for letter1 of font
+  #    rows.push
+  #      for letter2 of font
+  #        if letter1 == letter2
+  #          '<td><span class="zero">0</span>'
+  #        else
+  #          """<a href="/?start=#{letter1}&target=#{letter2}&#{family}=1">#{dict["#{letter1}-#{letter2}"]}</a>"""
