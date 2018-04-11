@@ -16,11 +16,18 @@ svg.puzzle .coins circle:hover:not(.rigid) { fill: red; }
 svg .valid rect { fill: lightgreen }
 
 .modal {
-  position: absolute; width: 100%; height: 100%;
+  position: fixed; z-index: 1;
+  width: 100%; height: 100%; left: 0; top: 0; box-sizing: border-box;
+  background-color: white;
   opacity: 0.95;
+  overflow: auto;
   display: none;
-  padding: 10%;
+  padding: 20px;
   background: white;
+}
+.modal-content {
+  position: absolute;
+  overflow: auto;
 }
 
 /*#win { background: bisque; }*/
