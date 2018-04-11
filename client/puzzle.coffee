@@ -21,6 +21,8 @@ getTarget = ->
 getMoves = ->
   startPuzzle.nMoves() + targetPuzzle.nMoves()
 
+infinity = "∞"
+
 Template.main.helpers
   family: -> Session.get 'family'
   start: -> Session.get 'start'
@@ -32,7 +34,7 @@ Template.main.helpers
       family: Session.get 'family'
       puzzle: sessionPuzzle()
     , sort: ['length', 'date']
-    )?.length or 'NONE'
+    )?.length or infinity
   highscores: ->
     Solutions.find
       family: Session.get 'family'
@@ -52,7 +54,7 @@ Template.main.helpers
     (Puzzles.findOne
       family: Session.get 'family'
       puzzle: "#{letters.letter1}-#{letters.letter2}"
-    )?.bestLength ? "∞"
+    )?.bestLength ? infinity
 
 Template.main.events
   'click #submit': ->

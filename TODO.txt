@@ -4,7 +4,6 @@
 
 - Meteor server
   * improve layout, especially on mobile
-    - put highscore on its own line?
     - prevent some line breaks from font choice
   - android app
   - ensure index
