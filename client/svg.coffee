@@ -1,0 +1,1 @@
+@SVG = require 'svg.js'

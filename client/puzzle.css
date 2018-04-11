@@ -1,0 +1,32 @@
+#warnings { background: red; color: yellow; padding: 1ex; display: none; }
+@media print {
+  .noprint { display: none; }
+}
+/*td { text-align: center; }*/
+td { vertical-align: middle; }
+
+.input { display: inline-block; margin-right: 1em; }
+
+svg .grid line { stroke: #cccccc; stroke-width: 0.04; stroke-linecap: round; }
+svg .coins circle {
+  stroke: black; stroke-width: 0.1; fill: orange;
+}
+svg.puzzle .coins circle:hover:not(.rigid) { fill: red; }
+svg .valid rect { fill: lightgreen }
+
+.modal {
+  position: absolute; width: 100%; height: 100%;
+  opacity: 0.95;
+  display: none;
+  padding: 10%;
+  background: white;
+}
+
+/*#win { background: bisque; }*/
+#win h1 { font-size: 50px; }
+
+#highscores td, #highscores th {
+  border: thin solid;
+  padding: 1ex; text-align: left;
+}
+table { border-collapse: collapse; }

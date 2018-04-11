@@ -1,0 +1,50 @@
+27*26*2 = 1404 puzzles
+
+- text describing puzzles, rules
+
+- Meteor server
+  * port code over, still single-page design
+  - pop-up for record numbers (or infinity) for all 27^2 puzzles
+    - click on one to switch to that puzzle
+  - display of best record for the current puzzle (try to beat this)
+  - pop-up of all solution counts for all people, sorted by count
+    (but no solution/animation for now)
+  * pop-up for record entry when you solve the puzzle:
+    name, email (both optional), post button
+    - name & email ideally remembered for next time
+  * checking of solutions on server
+    - starting from start...
+    - each move valid
+    - final image matches target
+  * Puzzle: family (5x7, 5x9, etc.), puzzle (A,B), best record for each puzzle
+  * Solution: family, puzzle, solver name, length, private: email, solution
+
+- puzzle solving interface
+  x move counting
+    x moving the same coin multiple times counts once or zero times
+      (if moved back to where it was)
+  x move recording
+  * high score keeping
+    * name entry
+  x add puzzle moves so far to URL
+  x undo
+  - redo stack
+  - warning before resetting entire puzzle (e.g. changing font)
+  - keep track of your personal best scores and which puzzle solved
+    (logging in? or just browser permanent store)
+  x reverse moves on the target shape
+  - animate current partial solution (especially cool given moves link)
+  - link from font page after some manipulation to puzzle solving interface
+    (so no lost work)
+
+- designing your own puzzles, at least as links
+  - different grid size, number of coins
+
+- font
+  - animation message 1 -> message 2
+  - option: real space instead of slash
+
+- Android app
+  - at least puzzle solving
+  - maybe all interfaces in tabs
+  - Cordova/ionic OR Progressive Web App

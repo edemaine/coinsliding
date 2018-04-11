@@ -1,0 +1,152 @@
+head
+  title Coin Sliding Font Puzzle
+  meta(name="viewport", content="width=device-width, initial-scale=1")
+body
+  +main
+
+template(name="main")
+  .modal#win
+    h1 CONGRATS!!
+    h1 YOU SOLVED THE PUZZLE!
+    h1 (#{moves} moves for #{family}: #{start} &rarr; #{target})
+    h2 Please submit your solution to the highscore list:
+    p
+      label(for="name")
+        b Your name (optional, will be made public):
+      input#name(name="name")
+    p
+      label(for="email")
+        b Your email (optional, will not be made public):
+      input#email(name="email")
+    p
+      button#submit Submit
+      button#noSubmit Cancel
+
+  .modal#highscores
+    button#hideHighscores Close
+    h1 Highscores for #{family}: #{start} &rarr; #{target}
+    table
+      tr
+        th Number of moves
+        th Solver
+        th Date
+      each highscores
+        tr
+          td= length
+          td= name
+          td= date
+
+  .modal#puzzles
+    button#hidePuzzles Close
+    h1 All puzzles in family #{family}:
+    table
+      tr
+        td
+        th(colspan="27") target
+      tr
+        td
+        each letter2 in letters
+          th #{letter2}
+      each letter1 in letters
+        tr
+          th #{letter1}
+          each letter2 in letters
+            td
+              a(href="/?start={{letter1}}&target={{letter2}}&{{family}}=1") {{record letter1=letter1 letter2=letter2}}
+
+  table(width="100%")
+    tr
+      td(style="text-align: left; vertical-align: middle;")
+        h1
+          a(href=".") Coin Sliding Font Puzzle
+      td(style="text-align: right; vertical-align: middle")
+        h2
+          | by 
+          a(href="http://erikdemaine.org/") Erik&nbsp;Demaine
+          |  and 
+          a(href="http://martindemaine.org") Martin&nbsp;Demaine
+          | , 2018
+
+  //-table#data.noprint(width="100%")
+    tr
+      td
+  p.noprint
+    button#showPuzzles All puzzles in family
+    | &nbsp;
+    b Puzzle family:
+    input#font5x7(type="radio", name="font")
+    label(for="font5x7") 5&times;7&nbsp;font (<i>medium</i>)
+    input#font5x9(type="radio", name="font")
+    label(for="font5x9") 5&times;9&nbsp;font (<i>hard</i>)
+    | &nbsp;
+    button#showHighscores Highscore: #{highscore}
+
+  table(width="100%")
+    tr
+      td(width="50%")
+        .input
+          label(for="start")
+            b Start:
+          select#start(name="start")
+            +fontOptions
+        .input
+          b Moves:
+          span#moves 0
+        .input
+          button#undo Undo
+          button#reset Reset
+      td &rarr;
+      td(width="50%")
+        .input
+          label(for="target")
+            b Target:
+          select#target(name="target")
+            +fontOptions
+        .input
+          b Reverse Moves:
+          span#reverseMoves 0
+        .input
+          button#reverseUndo Undo
+          button#reverseReset Reset
+    tr
+      td(width="50%")
+        #startsvg
+      td
+      td(width="50%")
+        #targetsvg
+
+  hr.noprint
+
+  //-
+    p(class="noprint") xxx description
+
+  p.noprint Check out <A HREF="http://erikdemaine.org/fonts/">other mathematical and puzzle fonts</A>. &bull; Feedback or not working?  <A HREF="mailto:edemaine+fonts@mit.edu">Email Erik</A>.
+
+template(name="fontOptions")
+  option(value="/") /
+  option(value="A") A
+  option(value="B") B
+  option(value="C") C
+  option(value="D") D
+  option(value="E") E
+  option(value="F") F
+  option(value="G") G
+  option(value="H") H
+  option(value="I") I
+  option(value="J") J
+  option(value="K") K
+  option(value="L") L
+  option(value="M") M
+  option(value="N") N
+  option(value="O") O
+  option(value="P") P
+  option(value="Q") Q
+  option(value="R") R
+  option(value="S") S
+  option(value="T") T
+  option(value="U") U
+  option(value="V") V
+  option(value="W") W
+  option(value="X") X
+  option(value="Y") Y
+  option(value="Z") Z
