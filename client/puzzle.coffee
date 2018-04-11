@@ -73,14 +73,14 @@ Template.main.events
   'click #noSubmit': ->
     document.getElementById('win').style.display = 'none'
 
-  'click #showHighscores': (e, t) ->
+  'click .showHighscores': (e, t) ->
     document.getElementById('highscores').style.display = 'block'
-  'click #hideHighscores': ->
+  'click .hideHighscores': ->
     document.getElementById('highscores').style.display = 'none'
 
-  'click #showPuzzles': (e, t) ->
+  'click .showPuzzles': (e, t) ->
     document.getElementById('puzzles').style.display = 'block'
-  'click #hidePuzzles': ->
+  'click .hidePuzzles': ->
     document.getElementById('puzzles').style.display = 'none'
 
   'input #name': ->

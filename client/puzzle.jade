@@ -23,7 +23,7 @@ template(name="main")
       button#noSubmit Cancel
 
   .modal#highscores
-    button#hideHighscores Close
+    button.hideHighscores Close
     h1 Best scores for #{family}: #{start} &rarr; #{target}
     table
       tr
@@ -35,9 +35,11 @@ template(name="main")
           td= length
           td= name
           td= date
+    p
+    button.hideHighscores Close
 
   .modal#puzzles
-    button#hidePuzzles Close
+    button.hidePuzzles Close
     h1 All puzzles in family #{family}:
     table
       tr
@@ -56,6 +58,8 @@ template(name="main")
                 span.zero 0
               else
                 a(href="/?start={{letter1}}&target={{letter2}}&{{family}}=1") {{record letter1=letter1 letter2=letter2}}
+    p
+    button.hidePuzzles Close
 
   .header
     h1
@@ -75,11 +79,11 @@ template(name="main")
     div.nobreak
       input#font5x9(type="radio", name="font")
       label(for="font5x9") 5&times;9&nbsp;font (<i>hard</i>)
-    button#showPuzzles.space All puzzles in family
+    button.showPuzzles.space All puzzles in family
   .p.noprint
     b This puzzle:
     | Move count to beat: #{highscore}
-    button#showHighscores.space All scores for this puzzle
+    button.showHighscores.space All scores for this puzzle
 
   table(width="100%")
     tr
