@@ -1,8 +1,23 @@
 27*26*2 = 1404 puzzles
 
-- text describing puzzles, rules
+* text describing puzzles, rules
 
 - Meteor server
+  * remove zeroes on diagonal, avoid saying "solved!!" 
+  * improve layout, especially on mobile
+    - float left/right title, make smaller
+    - put highscore on its own line?
+    - prevent some line breaks from font choice
+  * space before comma 
+  * transparent overlays don't cover everything
+  * family change doesn't reset move counts
+  - Kadira
+  - android app
+  - ensure index
+  - larger server?
+  - documentation
+  - slow to load the All Puzzles on mobile (and button toggles?)
+  - detect ready state and show LOADING instead of NONE
   x port code over, still single-page design
   x pop-up for record numbers (or infinity) for all 27^2 puzzles
     x click on one to switch to that puzzle
