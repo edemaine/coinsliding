@@ -256,6 +256,33 @@ class @CoinPuzzle extends CoinBox
     while @moveStack.length
       @undo()
 
+  span: ->
+    out = {}
+    neighbors = {}
+    visit = (coords) ->
+      return if out["#{coords[0]},#{coords[1]}"]
+      out["#{coords[0]},#{coords[1]}"] = true
+      for neighbor in neighborCoords coords
+        neighbors["#{neighbor[0]},#{neighbor[1]}"] ?= 0
+        neighbors["#{neighbor[0]},#{neighbor[1]}"] += 1
+        if neighbors["#{neighbor[0]},#{neighbor[1]}"] == 2
+          visit neighbor
+    for coin in @coins
+      visit coin.coords()
+    (coords for coords of out)
+  fullSpan: ->
+    @span().length == @width * @height
+  twoExtraCoins: ->
+    coins = @coins
+    for i in [0...@coins.length]
+      for j in [i+1...@coins.length]
+        @coins = (coins[...i].concat coins[i+1...j]).concat coins[j+1..]
+        if @fullSpan()
+          coins = @coins
+          return [i, j]
+    @coins = coins
+    return null
+
   unhighlight: (coin) ->
     return unless @highlighted?
     @highlighted.circle.removeClass 'highlight'
@@ -586,6 +613,7 @@ window?.onload = ->
 
 ## FONT CHECKING
 
+CoinPuzzle = @CoinPuzzle
 main = ->
   fonts =
     font5x7: require('./font5x7.coffee').font5x7
@@ -593,7 +621,11 @@ main = ->
   for name, font of fonts
     console.log name
     for char, ascii of font
-      box = CoinBox.fromASCII null, ascii
+      box = CoinPuzzle.fromASCII null, ascii
       console.log "  #{char}: #{box.width}x#{box.height}, #{box.coins.length} coins"
+      unless box.fullSpan()
+        console.log "    NOT FULL SPAN"
+      unless box.twoExtraCoins()
+        console.log "    NOT TWO EXTRA COINS"
 
 main() if require? and require.main == module
