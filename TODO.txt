@@ -8,10 +8,9 @@
     - float left/right title, make smaller
     - put highscore on its own line?
     - prevent some line breaks from font choice
-  * space before comma 
   * transparent overlays don't cover everything
   * family change doesn't reset move counts
-  - Kadira
+  * Kadira
   - android app
   - ensure index
   - larger server?
