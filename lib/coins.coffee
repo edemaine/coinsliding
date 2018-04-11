@@ -338,7 +338,7 @@ class @CoinPuzzle extends CoinBox
       if @gridOn then '' else '&off=1'
 ###
 
-class CoinPuzzleReverse extends CoinPuzzle
+class CoinPuzzleReverse extends @CoinPuzzle
   coinCanMove: (coin) ->
     neighbors = 0
     for neighbor in neighborCoords [coin.x, coin.y]
