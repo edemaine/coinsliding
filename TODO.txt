@@ -4,7 +4,6 @@
 
 - Meteor server
   * improve layout, especially on mobile
-    - prevent some line breaks from font choice
   - android app
   - ensure index
   - larger server?

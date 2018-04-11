@@ -69,16 +69,17 @@ template(name="main")
       td
   p.noprint
     b Puzzle family:
-    input#font5x7(type="radio", name="font")
-    label(for="font5x7") 5&times;7&nbsp;font (<i>medium</i>)
-    input#font5x9(type="radio", name="font")
-    label(for="font5x9") 5&times;9&nbsp;font (<i>hard</i>)
-    | &nbsp;
-    button#showPuzzles All puzzles in family
+    .nobreak
+      input#font5x7(type="radio", name="font")
+      label(for="font5x7") 5&times;7&nbsp;font (<i>medium</i>)
+    .nobreak
+      input#font5x9(type="radio", name="font")
+      label(for="font5x9") 5&times;9&nbsp;font (<i>hard</i>)
+    button#showPuzzles.space All puzzles in family
     br
     b This puzzle:
-    | Move count to beat: #{highscore} &nbsp;
-    button#showHighscores Best scores table
+    | Move count to beat: #{highscore}
+    button#showHighscores.space Best scores table
 
   table(width="100%")
     tr
