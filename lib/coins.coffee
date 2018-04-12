@@ -340,15 +340,6 @@ class @CoinPuzzle extends CoinBox
         return false
     puzzle1.toASCII() == puzzle2
 
-###
-  saveState: ->
-    return unless @alone
-    siteurl = ("#{site.x},#{site.y}" for site in @sites).join ';'
-    history.pushState null, 'voronoi',
-      "#{document.location.pathname}?p=#{siteurl}&grid=#{@gridLevel}" +
-      if @gridOn then '' else '&off=1'
-###
-
 class CoinPuzzleReverse extends @CoinPuzzle
   coinCanMove: (coin) ->
     neighbors = 0
