@@ -1,12 +1,9 @@
 without numbers: 27*26*2 = 1404 puzzles
 with numbers: 37*36*2 = 2664 puzzles
 
-* text describing puzzles, rules
-
 - Meteor server
   - android app
   - larger server?
-  - documentation
   - detect ready state and show LOADING instead of NONE
   x port code over, still single-page design
   x pop-up for record numbers (or infinity) for all 27^2 puzzles
