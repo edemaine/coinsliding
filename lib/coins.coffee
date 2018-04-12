@@ -410,7 +410,7 @@ start = target = null
 lastFont = null
 puzzleLoading = false
 
-puzzleLoadState = ->
+@puzzleLoadState = ->
   puzzleLoading = true
   for checkbox in checkboxes
     document.getElementById(checkbox).checked = getParameterByName checkbox

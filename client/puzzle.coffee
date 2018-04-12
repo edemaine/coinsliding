@@ -137,3 +137,11 @@ Template.puzzlesModal.helpers
   #          '<td><span class="zero">0</span>'
   #        else
   #          """<a href="/?start=#{letter1}&target=#{letter2}&#{family}=1">#{dict["#{letter1}-#{letter2}"]}</a>"""
+
+Template.puzzlesModal.events
+  'click a': (e) ->
+    e.preventDefault()
+    history.pushState null, 'follow puzzle link',
+      e.target.getAttribute 'href'
+    puzzleLoadState()
+    puzzlesOn.set false
