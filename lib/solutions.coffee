@@ -31,7 +31,7 @@ Meteor.methods
     unless solution.family in ['font5x7', 'font5x9']
       throw new Meteor.Error "Invalid family '#{solution.family}'"
     font = fonts[solution.family]
-    unless match = solution.puzzle.match /^([A-Z\/])-([A-Z\/])$/
+    unless match = solution.puzzle.match /^([A-Z0-9\/])-([A-Z0-9\/])$/
       throw new Meteor.Error "Invalid puzzle '#{solution.puzzle}'"
     for move in solution.moves
       if move.length != 4
