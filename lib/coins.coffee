@@ -22,7 +22,7 @@ class Coin
   update: (animate = false) ->
     return unless @circle?
     circle = @circle
-    circle = circle.animate animate if animate
+    circle = circle.animate animate, '<>' if animate
     circle.center @coords()...
 
 class CoinBox
