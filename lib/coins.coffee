@@ -219,7 +219,7 @@ class @CoinPuzzle extends CoinBox
           out.push coords
     out
 
-  moveCoin: (coin, coords) ->
+  moveCoin: (coin, coords, animate) ->
     moved = false
     if (coin.x != coords[0] or coin.y != coords[1]) and @validMove coin, coords
       lastMove = @moveStack[@moveStack.length - 1]
@@ -239,7 +239,7 @@ class @CoinPuzzle extends CoinBox
       @map["#{coin.x},#{coin.y}"] = coin
       @emit 'move'
       moved = true
-    coin.update()  ## always do this in case we were draggin the coin
+    coin.update animate  ## always do this in case we were draggin the coin
     moved
 
   undo: (animate = undoSpeed) ->
