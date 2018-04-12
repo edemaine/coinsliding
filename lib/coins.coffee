@@ -352,6 +352,16 @@ class CoinPuzzleReverse extends @CoinPuzzle
     return false if @coinAt coords
     @coinCanMove coin
 
+  hasValidMove: ->
+    ## Check for full board
+    if @coins.length == @width * @height
+      return null
+    ## Check for reverse-movable coin
+    for coin in @coins
+      if @coinCanMove coin
+        return coin
+    null
+
 ## Based on jolly.exe's code from http://stackoverflow.com/questions/901115/how-can-i-get-query-string-values-in-javascript
 getParameterByName = (name, search = location.search) ->
   name = name.replace /[\[]/g, "\\["
@@ -621,5 +631,8 @@ main = ->
         console.log "    NOT FULL SPAN"
       unless box.twoExtraCoins()
         console.log "    NOT TWO EXTRA COINS"
+      box = CoinPuzzleReverse.fromASCII null, ascii
+      unless box.hasValidMove()
+        console.log "    NO REVERSE MOVE => UNREACHABLE"
 
 main() if require? and require.main == module
