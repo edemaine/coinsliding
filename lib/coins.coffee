@@ -373,7 +373,7 @@ getOffset = (el) ->
 
 ## PUZZLE GUI
 
-resize = (ids) ->
+@resize = (ids) ->
   offset = getOffset document.getElementById ids[0]
   height = Math.max 100, window.innerHeight - offset.y
   for id in ids
