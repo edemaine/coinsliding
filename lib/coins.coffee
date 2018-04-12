@@ -513,9 +513,12 @@ updateText = (setUrl = true, force = false) ->
   #classes = []
   #document.getElementById('output').setAttribute 'class', classes.join ' '
   size = document.getElementById('size').value
-  document.getElementById('svgSize').sheet.deleteRule 0
+  while document.getElementById('svgSize').sheet.cssRules.length > 0
+    document.getElementById('svgSize').sheet.deleteRule 0
   document.getElementById('svgSize').sheet.insertRule(
     "svg { width: #{0.76*size}px; margin: #{size*0.12}px; }", 0)
+  document.getElementById('svgSize').sheet.insertRule(
+    ".word + .word { margin-left: #{0.75*size}px; }", 1)
   checkParams =
     text: params.text
   for checkbox in checkboxesRebuild
