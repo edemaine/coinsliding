@@ -22,6 +22,7 @@ module.exports = {
     },
     buildOptions: {
       serverOnly: true,
+      //server: 'https://coinsliding.erikdemaine.org',
       buildLocation: '/scratch/coinsliding-build'
     },
     env: {
