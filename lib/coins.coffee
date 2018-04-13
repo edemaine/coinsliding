@@ -137,6 +137,8 @@ class @CoinPuzzle extends CoinBox
 
   nMoves: ->
     @moveStack.length
+  moves: ->
+    @moveStack[..]
   encodeMoves: ->
     ("#{move[0]}_#{move[1]}-#{move[2]}_#{move[3]}" for move in @moveStack)
     .join ' '
@@ -341,6 +343,10 @@ class @CoinPuzzle extends CoinBox
     puzzle1.toASCII() == puzzle2
 
 class CoinPuzzleReverse extends @CoinPuzzle
+  moves: ->
+    for [x1,y1,x2,y2] in @moveStack.reverse()
+      [x2,y2,x1,y1]
+
   coinCanMove: (coin) ->
     neighbors = 0
     for neighbor in neighborCoords [coin.x, coin.y]
@@ -486,7 +492,7 @@ puzzleSetState = ->
   puzzleSolveCheck?()
 
 @puzzleSolution = ->
-  startPuzzle.moveStack[..].concat targetPuzzle.moveStack[..].reverse()
+  [].concat startPuzzle.moves(), targetPuzzle.moves()
 
 ## FONT GUI
 
