@@ -33,6 +33,8 @@ Meteor.methods
     font = fonts[solution.family]
     unless match = solution.puzzle.match /^([A-Z0-9\/])-([A-Z0-9\/])$/
       throw new Meteor.Error "Invalid puzzle '#{solution.puzzle}'"
+    if match[1] == match[2]
+      throw new Meteor.Error "Automorphic puzzle '#{solution.puzzle}'"
     for move in solution.moves
       if move.length != 4
         throw new Meteor.Error "Invalid move '#{move}'"
