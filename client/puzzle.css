@@ -42,7 +42,7 @@ svg .valid rect { fill: lightgreen }
 }
 
 /*#win { background: bisque; }*/
-#win h1 { font-size: 50px; }
+/*#win h1 { font-size: 50px; }*/
 
 #highscores td, #highscores th {
   border: thin solid;
