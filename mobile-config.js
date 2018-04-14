@@ -6,7 +6,7 @@
 App.info({
   id: 'org.erikdemaine.coinsliding',
   name: 'Coin Sliding',
-  version: '1.0.2',
+  version: '1.0.3',
   author: 'Erik Demaine',
   email: 'edemaine+coinsliding@mit.edu'
 });
