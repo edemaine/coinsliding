@@ -279,12 +279,11 @@ class @CoinPuzzle extends CoinBox
     if reverseMovable
       reverse = new CoinPuzzleReverse null, @width, @height, @coins
     for i in [0...coins.length]
-      if reverseMovable
-        continue unless reverse.coinCanMove coins[i]
       for j in [i+1...coins.length]
-        if reverseMovable
-          continue unless reverse.coinCanMove coins[j]
         @coins = (coins[...i].concat coins[i+1...j]).concat coins[j+1..]
+        if reverseMovable
+          continue unless reverse.coinCanMove coins[i], [coins[j]]
+          continue unless reverse.coinCanMove coins[j], [coins[i]]
         if @fullSpan()
           @coins = coins
           return [i, j]
@@ -353,10 +352,10 @@ class CoinPuzzleReverse extends @CoinPuzzle
     for [x1,y1,x2,y2] in @moveStack.reverse()
       [x2,y2,x1,y1]
 
-  coinCanMove: (coin) ->
+  coinCanMove: (coin, ignore) ->
     neighbors = 0
     for neighbor in neighborCoords [coin.x, coin.y]
-      if @coinAt neighbor
+      if @coinAt(neighbor) and (not ignore? or @coinAt(neighbor) not in ignore)
         neighbors += 1
     neighbors >= 2
 
