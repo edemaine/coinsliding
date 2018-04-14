@@ -274,13 +274,19 @@ class @CoinPuzzle extends CoinBox
     (coords for coords of out)
   fullSpan: ->
     @span().length == @width * @height
-  twoExtraCoins: ->
+  twoExtraCoins: (reverseMovable = false) ->
     coins = @coins
-    for i in [0...@coins.length]
-      for j in [i+1...@coins.length]
+    if reverseMovable
+      reverse = new CoinPuzzleReverse null, @width, @height, @coins
+    for i in [0...coins.length]
+      if reverseMovable
+        continue unless reverse.coinCanMove coins[i]
+      for j in [i+1...coins.length]
+        if reverseMovable
+          continue unless reverse.coinCanMove coins[j]
         @coins = (coins[...i].concat coins[i+1...j]).concat coins[j+1..]
         if @fullSpan()
-          coins = @coins
+          @coins = coins
           return [i, j]
     @coins = coins
     return null
@@ -637,6 +643,8 @@ main = ->
         console.log "    NOT FULL SPAN"
       unless box.twoExtraCoins()
         console.log "    NOT TWO EXTRA COINS"
+      unless box.twoExtraCoins true
+        console.log "    NOT TWO EXTRA COINS WITH REVERSE MOVES"
       box = CoinPuzzleReverse.fromASCII null, ascii
       unless box.hasValidMove()
         console.log "    NO REVERSE MOVE => UNREACHABLE"
