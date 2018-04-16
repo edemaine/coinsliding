@@ -295,6 +295,7 @@ class @CoinPuzzle extends CoinBox
     @highlighted.circle.removeClass 'highlight'
     @highlighted = null
   highlight: (coin) ->
+    @unhighlight()
     @highlighted = coin
     coin.circle.addClass 'highlight'
 
@@ -334,8 +335,8 @@ class @CoinPuzzle extends CoinBox
     @moveCoin @dragCoin, @dragcoord e, true
     #@saveState()
     @dragPoint = @dragCoin = null
-    e.preventDefault()
-    e.stopPropagation()
+    e.preventDefault?()
+    e.stopPropagation?()
 
   @checkSolution: (puzzle1, puzzle2, moves) ->
     puzzle1 = CoinPuzzle.fromASCII null, puzzle1
