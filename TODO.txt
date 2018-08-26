@@ -2,7 +2,6 @@ without numbers: 27*26*2 = 1404 puzzles
 with numbers: 37*36*2 = 2664 puzzles
 
 - Meteor server
-  - android app
   - larger server?
   - detect ready state and show LOADING instead of NONE
   x port code over, still single-page design
@@ -26,8 +25,8 @@ with numbers: 37*36*2 = 2664 puzzles
     x moving the same coin multiple times counts once or zero times
       (if moved back to where it was)
   x move recording
-  * high score keeping
-    * name entry
+  x high score keeping
+    x name entry
   x add puzzle moves so far to URL
   x undo
   - redo stack
@@ -46,7 +45,4 @@ with numbers: 37*36*2 = 2664 puzzles
   - animation message 1 -> message 2
   - option: real space instead of slash
 
-- Android app
-  - at least puzzle solving
-  - maybe all interfaces in tabs
-  - Cordova/ionic OR Progressive Web App
+x Android app
