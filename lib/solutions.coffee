@@ -1,7 +1,7 @@
 @Solutions = new Mongo.Collection 'solutions'
 
 if Meteor.isServer
-  Solutions._ensureIndex [
+  Solutions.createIndex [
     ['family', 1]
     ['puzzle', 1]
   ]
