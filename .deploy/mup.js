@@ -18,7 +18,7 @@ module.exports = {
       one: {}
     },
     docker: {
-      image: 'abernix/meteord:node-8.4.0-base', 
+      image: 'zodern/meteor:latest', 
     },
     buildOptions: {
       serverOnly: true,
@@ -35,6 +35,7 @@ module.exports = {
 
   // Mongo server
   mongo: {
+    version: '5.0.9',
     oplog: true,
     port: 27017,
     servers: {
